@@ -1,5 +1,8 @@
-- Créer le composant Catalog
-- L'associer à une route /catalog
-- Ajouter un lien dans la navbar permettant de visiter le catalog
+- Créer une liste de plateformes pour vos jeux (PS5, PC, XBOX, Steam)
+- Afficher une balise select qui contient toutes les options contenues 
+dans la liste
 
-Durée max du TP: 10 min
+
+
+BONUS: 
+    - Ajouter le prix aux produits
