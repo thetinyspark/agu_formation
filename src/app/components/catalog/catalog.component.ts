@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PlatformPipe } from '../../pipes/platform.pipe';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, FormsModule, PlatformPipe],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
@@ -48,6 +50,8 @@ export class CatalogComponent {
     }
   ]; 
 
+  public currentPlatform:string = "";
+
   public getPlatforms():string[]{
     // retourne un tableau contenant toutes les plateformes de tous les produits
     const platforms = this.products.map( (p)=>p.platform );
@@ -57,6 +61,9 @@ export class CatalogComponent {
 
     // on reconstruit un tableau à partir du Set
     const uniqPlatforms = Array.from( uniqPlatformsSet );
+
+    // on ajoute une plateforme vide (pour pouvoir ne sélectionner aucune plateforme)
+    uniqPlatforms.unshift("");
 
     // on retourne le tableau avec les plateformes uniques
     return uniqPlatforms;
