@@ -1,9 +1,5 @@
-- Ajouter une instance de la navbar au sein de AppComponent
-- Une fois la navbar ajoutée, créez une liste contenant 
-des liens vers d'éventuelles autres sections de votre site par ex:
-
-- Home
-- Catalog
-- Cart
+- Créer le composant Catalog
+- L'associer à une route /catalog
+- Ajouter un lien dans la navbar permettant de visiter le catalog
 
 Durée max du TP: 10 min
