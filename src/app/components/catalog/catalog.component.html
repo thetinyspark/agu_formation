@@ -1,1 +1,6 @@
-<p>catalog works!</p>
+<div class="catalog">
+    <div class="product" *ngFor="let currentProduct of products">
+        <h2>{{ currentProduct.name }}</h2>
+        <img src={{currentProduct.img}}/>
+    </div>
+</div>
