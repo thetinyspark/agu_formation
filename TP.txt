@@ -1,0 +1,9 @@
+- Ajouter une instance de la navbar au sein de AppComponent
+- Une fois la navbar ajoutée, créez une liste contenant 
+des liens vers d'éventuelles autres sections de votre site par ex:
+
+- Home
+- Catalog
+- Cart
+
+Durée max du TP: 10 min
