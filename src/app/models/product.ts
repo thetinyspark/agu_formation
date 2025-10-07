@@ -3,4 +3,5 @@ export class Product {
     public name:string = ""; 
     public price:number = 0; 
     public img:string = "";
+    public platform:string = "";
 }

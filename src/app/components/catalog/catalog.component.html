@@ -1,4 +1,10 @@
 <div class="catalog">
+    <select class="platforms">
+        <option 
+        *ngFor="let platform of getPlatforms()"
+        value={{platform}}>{{platform}}</option>
+    </select>
+
     <div class="product" *ngFor="let currentProduct of products">
         <h2>{{ currentProduct.name }}</h2>
         <img src={{currentProduct.img}}/>

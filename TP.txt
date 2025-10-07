@@ -1,8 +1,8 @@
-- Créer une liste de plateformes pour vos jeux (PS5, PC, XBOX, Steam)
-- Afficher une balise select qui contient toutes les options contenues 
+- Créez une liste de plateformes pour vos jeux (PS5, PC, XBOX, Steam)
+- Affichez une balise select qui contient toutes les options contenues 
 dans la liste
 
 
 
 BONUS: 
-    - Ajouter le prix aux produits
+    - Affichez le prix des produits
