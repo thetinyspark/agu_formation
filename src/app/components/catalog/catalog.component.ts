@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PlatformPipe } from '../../pipes/platform.pipe';
+import { CatalogPipe } from '../../pipes/catalog.pipe';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [NgFor, FormsModule, PlatformPipe],
+  imports: [NgFor, FormsModule, CatalogPipe],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
@@ -50,7 +50,20 @@ export class CatalogComponent {
     }
   ]; 
 
+
   public currentPlatform:string = "";
+  public priceMin:number = 0;
+  public priceMax:number = 100;
+  public nameFilter:string = "";
+
+  public getFilters():any{
+    return {
+      currentPlatform: this.currentPlatform, 
+      priceMin: this.priceMin, 
+      priceMax: this.priceMax, 
+      nameFilter: this.nameFilter
+    }
+  }
 
   public getPlatforms():string[]{
     // retourne un tableau contenant toutes les plateformes de tous les produits

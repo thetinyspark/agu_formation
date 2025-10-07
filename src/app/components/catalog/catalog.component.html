@@ -1,14 +1,19 @@
 <div class="catalog">
-    <select class="platforms" [(ngModel)]="currentPlatform">
+    <label>Platforme: </label><select class="platforms" [(ngModel)]="currentPlatform">
         <option 
         *ngFor="let platform of getPlatforms()"
         value={{platform}}>{{platform}}</option>
     </select>
+    <br/>
+    <label>Prix min: </label><input type="number" [(ngModel)]="priceMin" /> <br/>
+    <label>Prix max: </label><input type="number" [(ngModel)]="priceMax" /> <br/>
+    <label>Nom: </label><input type="string" [(ngModel)]="nameFilter" /> <br/>
 
-    <p>La plateforme courante est : {{currentPlatform}}</p>
-
-    <div class="product" *ngFor="let currentProduct of products | platform : currentPlatform">
+    <div class="product" 
+    *ngFor="let currentProduct of products | catalog : getFilters()">
         <h2>{{ currentProduct.name }}</h2>
         <img src={{currentProduct.img}}/>
+        <p>Prix: {{currentProduct.price}}</p>
+        <p>Plateform: {{currentProduct.platform}}</p>
     </div>
 </div>
