@@ -1,1 +1,8 @@
-<p>product-detail works!</p>
+<div class="product" *ngIf="currentProduct != null">
+    <h2>{{ currentProduct?.name }}</h2>
+    <img src={{currentProduct?.img}}/>
+    <p>Prix: {{currentProduct?.price}}</p>
+    <p>Plateforme: {{currentProduct?.platform}}</p>
+    <br/>
+    <p>Description: {{currentProduct?.desc}}</p>
+</div>
