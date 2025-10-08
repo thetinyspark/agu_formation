@@ -9,7 +9,6 @@ import { environment } from '../../environments/environment';
 })
 export class CatalogService {
   private _client: HttpClient = inject(HttpClient);
-  private _cart:Product[] = [];
 
   constructor() {}
 
@@ -22,13 +21,17 @@ export class CatalogService {
     return products.find( (p)=>p.id === id) || null;
   }
 
-  // normalement, on est censés retourner ici, le contenu de _cart
-  // et non pas le contenu du fichier cart.json
   public getCart():Promise<Product[]>{
-    return Promise.resolve(this._cart);
+    return firstValueFrom( this._client.get<Product[]>(environment.cartURI) );
   }
 
   public buy(product:Product):void{
-    this._cart.push(product)   ;
+    this._client.post(environment.buyURI, {
+      product: product
+    }, {}).subscribe(
+      ()=>{
+
+      }
+    );
   }
 }

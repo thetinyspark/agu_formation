@@ -4,5 +4,6 @@ export const environment = {
     production: false, 
     domain: "http://localhost:3000", 
     productsURI: "./assets/products.json",
+    buyURI: "./buy/:id",
     cartURI: "./assets/cart.json"
 };
