@@ -23,50 +23,22 @@ export class CatalogComponent {
   private _catalog:CatalogService = inject(CatalogService);
 
   constructor(){
+    this.demoFetch();
+  }
 
-    // la méthode fetch native de javascript permet d'aller chercher 
-    // le contenu présent à l'adresse passée en paramètre. 
-    // Cette  méthode renvoit une promesse, çàd, un objet standardisé
-    // permettant de gérer la disponibilité asynchrone du contenu. 
-    // lorsque le contenu sera dispo la fonction passée en paramètre
-    // s'éxécutera.
-    fetch("./assets/products.json").then(
-      (response:Response)=>{
-        // une fois que l'on a obtenu une réponse du serveur
-        // on essaie d'interpréter le contenu de la réponse sous 
-        // forme de texte.
-        response.text().then( 
-          (value:string)=>{
-            // une fois le texte obtenu on l'affiche dans la console
-            // ici, le texte contient le contenu du fichier products.json
-            console.log(value);
-          }
-        )
-      }
-    ).catch( 
-      (reason:any)=>{
-        // au cas où cela se passerait mal, on affiche la raison de l'échec
-        console.log(reason);
-      }
-    );
-
-    // promesse personnalisée qui permet de renvoyer la valeur "10" au bout de 5s
-    const p1 = new Promise( 
-      (onResolve, onReject)=>{
-
-        setTimeout( 
-          ()=>{
-              onResolve(10);
-          }, 
-          5000
-        )
-       
-      }
-    ); 
-
-    p1.then( (value )=>{
-      console.log(value);
-    });
+  public async demoFetch(){
+    // en rendant la fonction asynchrone je peux attendre qu'une promesse soit résolue
+    // avant de passer à la suite du code de ma fonction. 
+    // ATTENTION: seul le code de la fonction asynchrone est bloqué 
+    // le temps de la résolution de la promesse, le reste de l'application
+    // continue de tourner
+    try{
+      const response:Response = await fetch("./assets/products.json");
+      const value:string = await response.text();
+      console.log(value);    
+    }catch(reason){
+      console.log(reason);
+    }
   }
 
   public ngOnInit():void{
