@@ -11,9 +11,6 @@ import { NamePipe } from './name.pipe';
 export class CatalogPipe implements PipeTransform {
 
   transform(products: Product[], filters:any): Product[] {
-
-    console.log(products, filters);
-
     const p1 = new PlatformPipe();
     const p2 = new PricePipe();
     const p3 = new NamePipe();
