@@ -1,1 +1,5 @@
-<p>cart works!</p>
+    <app-product 
+        [currentProduct]="myProduct" 
+        [detailed]="false"
+        *ngFor="let myProduct of products"
+    ></app-product>

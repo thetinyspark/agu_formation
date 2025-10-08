@@ -25,11 +25,10 @@ export class CatalogService {
   // normalement, on est censés retourner ici, le contenu de _cart
   // et non pas le contenu du fichier cart.json
   public getCart():Promise<Product[]>{
-     return firstValueFrom( this._client.get<Product[]>(environment.cartURI) );
+    return Promise.resolve(this._cart);
   }
 
   public buy(product:Product):void{
-    // on ajoute à _cart le produit que l'on souhaite acheter
-    // (donc stocké dans le panier    
+    this._cart.push(product)   ;
   }
 }
