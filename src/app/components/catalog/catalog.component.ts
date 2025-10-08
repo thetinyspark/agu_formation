@@ -22,24 +22,7 @@ export class CatalogComponent {
 
   private _catalog:CatalogService = inject(CatalogService);
 
-  constructor(){
-    this.demoFetch();
-  }
-
-  public async demoFetch(){
-    // en rendant la fonction asynchrone je peux attendre qu'une promesse soit résolue
-    // avant de passer à la suite du code de ma fonction. 
-    // ATTENTION: seul le code de la fonction asynchrone est bloqué 
-    // le temps de la résolution de la promesse, le reste de l'application
-    // continue de tourner
-    try{
-      const response:Response = await fetch("./assets/products2.json");
-      const value:string = await response.text();
-      console.log(value);    
-    }catch(reason){
-      console.log(reason);
-    }
-  }
+  constructor(){}
 
   public ngOnInit():void{
     this._catalog.getProducts().subscribe(
