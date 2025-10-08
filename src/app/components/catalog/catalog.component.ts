@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { CatalogPipe } from '../../pipes/catalog.pipe';
 import { CatalogService } from '../../services/catalog.service';
 import { RouterLink } from '@angular/router';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [NgFor, FormsModule, CatalogPipe, RouterLink],
+  imports: [NgFor, FormsModule, CatalogPipe, RouterLink, ProductComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
@@ -27,8 +28,6 @@ export class CatalogComponent {
 
   public async ngOnInit(){
     this.products = await this._catalog.getProducts();
-
-    // const myProduct = await this._catalog.getProductById(3);
   }
 
   public getFilters():any{

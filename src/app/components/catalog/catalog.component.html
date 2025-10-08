@@ -9,12 +9,10 @@
     <label>Prix max: </label><input type="number" [(ngModel)]="priceMax" /> <br/>
     <label>Nom: </label><input type="string" [(ngModel)]="nameFilter" /> <br/>
 
-    <div class="product" 
-    *ngFor="let currentProduct of products | catalog : getFilters()"
-    [routerLink]="['/product', currentProduct.id]">
-        <h2>{{ currentProduct.name }}</h2>
-        <img src={{currentProduct.img}}/>
-        <p>Prix: {{currentProduct.price}}</p>
-        <p>Plateforme: {{currentProduct.platform}}</p>
-    </div>
+    <app-product 
+        [currentProduct]="myProduct" 
+        [detailed]="false"
+        [routerLink]="['/product', myProduct.id]"
+        *ngFor="let myProduct of products | catalog : getFilters()"
+    ></app-product>
 </div>

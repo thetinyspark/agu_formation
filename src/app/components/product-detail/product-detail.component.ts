@@ -4,18 +4,19 @@ import { CatalogService } from '../../services/catalog.service';
 import { Product } from '../../models/product';
 import { firstValueFrom } from 'rxjs';
 import { NgIf } from '@angular/common';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [NgIf],
+  imports: [ProductComponent],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent {
   private _activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   private _catalog:CatalogService = inject(CatalogService);
-  public currentProduct:Product|null = null;
+  public product:Product|null = null;
 
   public async ngOnInit(){
 
@@ -27,7 +28,7 @@ export class ProductDetailComponent {
     const id:number = parseInt(map.get("id") || "-1");
 
     // puis on récupère le produit correspondant
-    this.currentProduct = await this._catalog.getProductById(id);
+    this.product = await this._catalog.getProductById(id);
        
       
   }
