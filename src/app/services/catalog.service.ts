@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class CatalogService {
 
   constructor() {}
 
-  public getProducts(): Observable<Product[]> {
-    return this._client.get<Product[]>(environment.productsURI);
+  public getProducts(): Promise<Product[]> {
+    return firstValueFrom( this._client.get<Product[]>(environment.productsURI) );
   }
 }

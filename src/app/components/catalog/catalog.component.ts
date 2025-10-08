@@ -24,12 +24,8 @@ export class CatalogComponent {
 
   constructor(){}
 
-  public ngOnInit():void{
-    this._catalog.getProducts().subscribe(
-      (products:Product[])=>{
-        this.products = products;
-      }
-    );
+  public async ngOnInit(){
+    this.products = await this._catalog.getProducts();
   }
 
   public getFilters():any{
