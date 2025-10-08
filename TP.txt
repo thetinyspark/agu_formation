@@ -1,15 +1,7 @@
-- Créez deux input de type number, un qui définira le prix minimum d'un jeu et un autre son prix maximum. 
-- Reliez ces deux input à un NgModel
-- Créez un pipe nommé PricePipe, qui filtrera les jeux en fonction de leur prix minimum et maximum
+- Créez une promesse personnalisée qui renvoie la phrase "Hello World" 
+au bout de xxx ms. 
+- Faire en sorte d'utiliser la syntaxe async + await afin de récupérer 
+le contenu de cette promesse. 
 
-NB: La syntaxe suivante permet d'enchaîner les pipes: 
 
- Attention: les guillemets ici sont là dans le but de vous aider à vous repérer
- ne les utilisez pas dans votre exercice 
-
-let product of ( (products) | pipe1: param1 : param2 ) | pipe2 : param1 : param2
-
-BONUS: 
-    - Créez un filtre NamePipe qui permet de filtrer les jeux en fonction de leur nom. 
-    - Bien sur il faut ajouter l'input text + nmodel correspondant
-    - Bien sur le filtre doit être insensible à la casse
+NB: vous pouvez utiliser la méthode demoFetch comme exemple (dans le catalog.component.ts)
