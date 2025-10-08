@@ -22,6 +22,35 @@ export class CatalogComponent {
 
   private _catalog:CatalogService = inject(CatalogService);
 
+  constructor(){
+
+    // la méthode fetch native de javascript permet d'aller chercher 
+    // le contenu présent à l'adresse passée en paramètre. 
+    // Cette  méthode renvoit une promesse, çàd, un objet standardisé
+    // permettant de gérer la disponibilité asynchrone du contenu. 
+    // lorsque le contenu sera dispo la fonction passée en paramètre
+    // s'éxécutera.
+    fetch("./assets/products.json").then(
+      (response:Response)=>{
+        // une fois que l'on a obtenu une réponse du serveur
+        // on essaie d'interpréter le contenu de la réponse sous 
+        // forme de texte.
+        response.text().then( 
+          (value:string)=>{
+            // une fois le texte obtenu on l'affiche dans la console
+            // ici, le texte contient le contenu du fichier products.json
+            console.log(value);
+          }
+        )
+      }
+    ).catch( 
+      (reason:any)=>{
+        // au cas où cela se passerait mal, on affiche la raison de l'échec
+        console.log(reason);
+      }
+    );
+  }
+
   public ngOnInit():void{
     this._catalog.getProducts().subscribe(
       (products:Product[])=>{
