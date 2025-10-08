@@ -3,4 +3,5 @@ export const environment = {
     baseHref:'/',
     production: false, 
     domain: "http://localhost:3000", 
+    productsURI: "./assets/products.json"
 };

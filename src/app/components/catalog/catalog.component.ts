@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Product } from '../../models/product';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CatalogPipe } from '../../pipes/catalog.pipe';
+import { CatalogService } from '../../services/catalog.service';
 
 @Component({
   selector: 'app-catalog',
@@ -12,49 +13,22 @@ import { CatalogPipe } from '../../pipes/catalog.pipe';
   styleUrl: './catalog.component.css'
 })
 export class CatalogComponent {
-  public products:Product[] = [
-    {
-        "id": 1, 
-        "name": "Call Of Duty", 
-        "img": "./assets/img/cod.jpg", 
-        "price": 79.99 ,
-        "platform": "PS5"
-    }, 
-    {
-        "id": 2, 
-        "name": "Tetris", 
-        "img": "./assets/img/tetris.jpg", 
-        "price": 24.99, 
-        "platform": "Steam"
-    }, 
-    {
-        "id": 3, 
-        "name": "Halo", 
-        "img": "./assets/img/halo.jpg", 
-        "price": 59.99, 
-        "platform": "XBOX"
-    }, 
-    {
-        "id": 4, 
-        "name": "Pacman", 
-        "img": "./assets/img/pacman.webp", 
-        "price": 14.99, 
-        "platform": "PC"
-    },
-    {
-        "id": 5, 
-        "name": "Pacman PS5", 
-        "img": "./assets/img/pacman.webp", 
-        "price": 17.99, 
-        "platform": "PS5"
-    }
-  ]; 
 
-
+  public products:Product[] = [];
   public currentPlatform:string = "";
   public priceMin:number = 0;
   public priceMax:number = 100;
   public nameFilter:string = "";
+
+  private _catalog:CatalogService = inject(CatalogService);
+
+  public ngOnInit():void{
+    this._catalog.getProducts().subscribe(
+      (products:Product[])=>{
+        this.products = products;
+      }
+    );
+  }
 
   public getFilters():any{
     return {
