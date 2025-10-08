@@ -3,6 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { emptyCartGuard } from './guards/empty-cart.guard';
 
 const routeConfig: Routes = [
   {
@@ -13,7 +14,8 @@ const routeConfig: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    title: 'My Cart'
+    title: 'My Cart', 
+    canActivate: [emptyCartGuard]
   },
   {
     path: 'catalog',

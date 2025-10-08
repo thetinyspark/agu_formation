@@ -20,4 +20,8 @@ export class CatalogService {
     const products = await this.getProducts();
     return products.find( (p)=>p.id === id) || null;
   }
+
+  public getCart():Promise<Product[]>{
+     return firstValueFrom( this._client.get<Product[]>(environment.cartURI) );
+  }
 }

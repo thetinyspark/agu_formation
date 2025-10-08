@@ -12,11 +12,8 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 })
 export class AppComponent {
 
-  public title = 'MyApp';
+  public title = 'My Game Video Store';
 
   constructor(){
-    let age:number = 40;
-    let name:string = "Nicolas";
-    this.title = `Bonjour je m'appelle ${name} et j'ai ${age} ans`;
   }
 }
