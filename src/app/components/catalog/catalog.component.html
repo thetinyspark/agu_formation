@@ -12,7 +12,9 @@
     <app-product 
         [currentProduct]="myProduct" 
         [detailed]="false"
-        [routerLink]="['/product', myProduct.id]"
+        [buyable]="true"
+        [redirectable]="true"
+        (onBuy)="onBuyProduct($event)"
         *ngFor="let myProduct of products | catalog : getFilters()"
     ></app-product>
 </div>

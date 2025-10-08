@@ -4,13 +4,12 @@ import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CatalogPipe } from '../../pipes/catalog.pipe';
 import { CatalogService } from '../../services/catalog.service';
-import { RouterLink } from '@angular/router';
 import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [NgFor, FormsModule, CatalogPipe, RouterLink, ProductComponent],
+  imports: [NgFor, FormsModule, CatalogPipe, ProductComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
@@ -54,5 +53,9 @@ export class CatalogComponent {
 
     // on retourne le tableau avec les plateformes uniques
     return uniqPlatforms;
+  }
+
+  public onBuyProduct(product:Product):void{
+    this._catalog.buy(product);
   }
 }
