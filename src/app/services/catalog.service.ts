@@ -15,4 +15,9 @@ export class CatalogService {
   public getProducts(): Promise<Product[]> {
     return firstValueFrom( this._client.get<Product[]>(environment.productsURI) );
   }
+
+  public async getProductById(id:number):Promise<Product|null>{
+    const products = await this.getProducts();
+    return products.find( (p)=>p.id === id) || null;
+  }
 }

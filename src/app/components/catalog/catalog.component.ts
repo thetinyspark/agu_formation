@@ -26,6 +26,9 @@ export class CatalogComponent {
 
   public async ngOnInit(){
     this.products = await this._catalog.getProducts();
+
+    const myProduct = await this._catalog.getProductById(3);
+    console.log(myProduct);
   }
 
   public getFilters():any{
