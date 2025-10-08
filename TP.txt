@@ -1,3 +1,8 @@
-- Faire en sorte d'afficher toutes les informations du produit au sein de ProductDetailComponent
-- Une fois toutes les informations affichées, essayez de convertir activatedRoute.paramMap en promesse 
-et utilisez la syntaxe async await. 
+- Ajouter au CatalogService une méthode, permettant de pousser un élément
+au sein du panier (cela veut dire qu'il faut maintenir un panier au sein du service)
+
+ATTENTION: à chaque rafraîchissement de la page, le panier sera vidée puisque la rafraîchissement est réinitialisée
+
+
+BONUS : Changer la méthode getCart du CatalogService et retourner le 
+contenu du panier qui est stocké sur le service
