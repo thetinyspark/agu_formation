@@ -1,7 +1,8 @@
-- Créez une promesse personnalisée qui renvoie la phrase "Hello World" 
-au bout de xxx ms. 
-- Faire en sorte d'utiliser la syntaxe async + await afin de récupérer 
-le contenu de cette promesse. 
+- Créez une méthode sur le CatalogService qui s'appelle getProductById
+- Cette méthode prendra un id:number en paramètre et permettra de renvoyer
+le produit correspondant à l'id en question ou null. 
 
-
-NB: vous pouvez utiliser la méthode demoFetch comme exemple (dans le catalog.component.ts)
+NB: 
+On n'a pas de vrai backend qui tourne à l'heure actuelle, juste 
+un fichier.json, vous pouvez donc réutiliser la méthode getProducts
+et appliquer un simple filtre sur le tableau des produits. 
