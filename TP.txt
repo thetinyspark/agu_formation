@@ -1,10 +1,2 @@
-- Ajouter une propriété publique en Input à ProductComponent. 
-- Cette propriété doit gérer la visibilité du bouton "Ajouter au panier"
-- Au sein de votre CatalogComponent et de votre ProductDetailComponent, 
-affichez le bouton Ajouter au Panier 
-- On doit maintenant pouvoir acheter le produit aussi bien depuis le CatalogComponent
-que depuis le ProductDetailComponent
-
-
-ATTENTION : 
-La description du produit ne doit être visible que depuis ProductDetailComponent
+- Sur catalogInterceptor, ajouter une interception de la demande du panier
+(environment.cartURI) et retournez le panier qui se trouve le CatalogServerService
