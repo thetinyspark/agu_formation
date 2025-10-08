@@ -1,2 +1,7 @@
 - Sur catalogInterceptor, ajouter une interception de la demande du panier
 (environment.cartURI) et retournez le panier qui se trouve le CatalogServerService
+
+BONUS: 
+Ajouter une interception pour l'URI suivante: 
+- products/:id
+Retournez le produit correspondant

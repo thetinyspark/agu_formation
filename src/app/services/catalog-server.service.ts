@@ -15,6 +15,10 @@ export class CatalogServerService {
     this._cart.push(product);
   }
 
+  public getProductById(id:number):Product|null{
+    return this.getProducts().find( p=>p.id == id) || null;
+  }
+
   public getCart():Product[]{
     return this._cart;
   }

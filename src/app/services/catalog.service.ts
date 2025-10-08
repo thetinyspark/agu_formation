@@ -15,10 +15,12 @@ export class CatalogService {
   public getProducts(): Promise<Product[]> {
     return firstValueFrom( this._client.get<Product[]>(environment.productsURI) );
   }
-
+  
   public async getProductById(id:number):Promise<Product|null>{
-    const products = await this.getProducts();
-    return products.find( (p)=>p.id === id) || null;
+    const url = environment.productURI.replace(":id", id.toString());
+    return firstValueFrom( this._client.get<Product|null>(url) );
+    // const products = await this.getProducts();
+    // return products.find( (p)=>p.id === id) || null;
   }
 
   public getCart():Promise<Product[]>{
@@ -26,12 +28,6 @@ export class CatalogService {
   }
 
   public buy(product:Product):void{
-    this._client.post(environment.buyURI, {
-      product: product
-    }, {}).subscribe(
-      ()=>{
-
-      }
-    );
+    this._client.post(environment.buyURI, {product: product}, {}).subscribe(()=>{});
   }
 }
