@@ -49,6 +49,24 @@ export class CatalogComponent {
         console.log(reason);
       }
     );
+
+    // promesse personnalisée qui permet de renvoyer la valeur "10" au bout de 5s
+    const p1 = new Promise( 
+      (onResolve, onReject)=>{
+
+        setTimeout( 
+          ()=>{
+              onResolve(10);
+          }, 
+          5000
+        )
+       
+      }
+    ); 
+
+    p1.then( (value )=>{
+      console.log(value);
+    });
   }
 
   public ngOnInit():void{
