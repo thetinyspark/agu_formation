@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CatalogService } from '../../services/catalog.service';
 import { Product } from '../../models/product';
 import { firstValueFrom } from 'rxjs';
-import { NgIf } from '@angular/common';
 import { ProductComponent } from '../product/product.component';
 
 @Component({
@@ -29,7 +28,9 @@ export class ProductDetailComponent {
 
     // puis on récupère le produit correspondant
     this.product = await this._catalog.getProductById(id);
-       
-      
+  }
+
+  public onBuyProduct(product:Product):void{
+    this._catalog.buy(product);
   }
 }

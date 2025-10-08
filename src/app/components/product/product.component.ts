@@ -1,7 +1,6 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { NgIf } from '@angular/common';
-import { CatalogService } from '../../services/catalog.service';
 
 @Component({
   selector: 'app-product',
@@ -18,9 +17,10 @@ export class ProductComponent {
   @Input()
   public detailed:boolean = false;
 
-  private _catalog:CatalogService = inject(CatalogService);
+  @Output()
+  public onBuy: EventEmitter<Product> = new EventEmitter();
 
   public addToCart(product:Product):void{
-    this._catalog.buy(product);
+    this.onBuy.emit(product);
   }
 }

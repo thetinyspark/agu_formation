@@ -1,1 +1,3 @@
-<app-product [currentProduct]="product" [detailed]="true"></app-product>
+<app-product    [currentProduct]="product" 
+                [detailed]="true"
+                (onBuy)="onBuyProduct($event)"></app-product>
