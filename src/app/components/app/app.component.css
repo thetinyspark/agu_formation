@@ -26,7 +26,6 @@ h1{
     position: absolute;
     top: 10%;
     left: 10%;
-    display: none;
 }
 
 .loader img{

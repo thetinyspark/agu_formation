@@ -1,5 +1,5 @@
-import { Component, computed, effect, Signal, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, computed, effect, inject, Signal, signal } from '@angular/core';
+import { CommonModule, NgIf } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import {
@@ -12,11 +12,12 @@ import {
   ReplaySubject,
   Subject,
 } from 'rxjs';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, NavBarComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, NavBarComponent, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -24,6 +25,9 @@ export class AppComponent {
   public title = 'My Game Video Store';
   public price = signal<number>(100);
   public vat = signal<number>(20);
+  public loadingService = inject(LoadingService);
+  public isLoading = this.loadingService.isLoading;
+
   public total = computed( 
     ()=>{
       return this.price() * (1 + this.vat() / 100);

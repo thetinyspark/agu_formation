@@ -1,19 +1,12 @@
 <main id="mainContent">
     <h1>{{title}}</h1>
-    <label>TVA ( {{vat()}} ) : </label>
-    <button (click)="upVAT()">+</button> 
-    <br/>
 
-    <label>Prix ({{price()}} ): </label>
-    <button (click)="upPrice()">+</button> 
-    <br/>
-
-    <p>Total: {{total()}}</p>
+    <p>{{isLoading()}}</p>
 
     <app-nav-bar></app-nav-bar>
     <router-outlet></router-outlet>
 
-    <div class="loader">
+    <div class="loader" *ngIf=" isLoading() == true ">
         <img src="./assets/img/spinner.gif" />
     </div>
 </main>

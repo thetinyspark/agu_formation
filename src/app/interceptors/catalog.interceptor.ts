@@ -8,7 +8,7 @@ import { Product } from '../models/product';
 export const catalogInterceptor: HttpInterceptorFn = (req, next) => {
 
   const service = inject(CatalogServerService);
-  const lag = Math.round( Math.random() * 1000 );
+  const lag = Math.round( Math.random() * 1000 ) + 1000;
   // const lag = 5000;
 
   if( req.method == "GET"){
