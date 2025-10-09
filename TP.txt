@@ -1,7 +1,5 @@
-- Sur catalogInterceptor, ajouter une interception de la demande du panier
-(environment.cartURI) et retournez le panier qui se trouve le CatalogServerService
+- Créez un resolver qui permet de résoudre les produits contenus dans le panier
+- Ajoutez ce resolver à la route cart
+- Utilisez les données retournées par ce resolver pour afficher le panier et non plus le CatalogService
 
-BONUS: 
-Ajouter une interception pour l'URI suivante: 
-- products/:id
-Retournez le produit correspondant
+

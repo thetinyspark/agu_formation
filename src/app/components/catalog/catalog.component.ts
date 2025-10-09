@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CatalogPipe } from '../../pipes/catalog.pipe';
 import { CatalogService } from '../../services/catalog.service';
 import { ProductComponent } from '../product/product.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -22,11 +23,13 @@ export class CatalogComponent {
   public nameFilter:string = "";
 
   private _catalog:CatalogService = inject(CatalogService);
+  private _activatedRoute:ActivatedRoute = inject(ActivatedRoute);
 
   constructor(){}
 
   public async ngOnInit(){
-    this.products = await this._catalog.getProducts();
+    const data:any = this._activatedRoute.snapshot.data;
+    this.products =  data.catalog as Product[] || [];
   }
 
   public getFilters():any{
