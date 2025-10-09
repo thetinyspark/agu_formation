@@ -7,7 +7,9 @@
     <router-outlet></router-outlet>
 
     <div class="loader" *ngIf=" isLoading() == true ">
+        <p>{{percentage()}}%</p>
         <img src="./assets/img/spinner.gif" />
     </div>
 </main>
 
+    

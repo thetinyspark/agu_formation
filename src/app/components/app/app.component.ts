@@ -27,6 +27,7 @@ export class AppComponent {
   public vat = signal<number>(20);
   public loadingService = inject(LoadingService);
   public isLoading = this.loadingService.isLoading;
+  public percentage = this.loadingService.percentage;
 
   public total = computed( 
     ()=>{
