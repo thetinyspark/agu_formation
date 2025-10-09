@@ -19,17 +19,18 @@ export class AppComponent {
     // of permet de créer un observable à partir de données synchrones
     // pipe permet de rediriger chacune des valeurs diffusée par l'observable
     // vers un opérateur (ici map). Cela résulte en un nouvel observable.
-    const obs1 = of("Katia", "Sofian", "Quentin", "Lucas").pipe(
+    const obs1 = of(100,200,300,400).pipe(
       map(
-        (value:string, index:number)=>{
-          return `Participant(e) N° ${index+1} : ${value}`;
+        (value:number, index:number)=>{
+          const tva = 0.2; // 20% TVA
+          return value * ( 1+tva );
         }
       )
     );
 
     const sub = obs1.subscribe(
       {
-        next: (data:string)=>{
+        next: (data:number)=>{
           console.log(data);
         }, 
         complete: ()=>{
