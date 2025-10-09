@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
-import { combineLatest, forkJoin, interval, Observable, of, ReplaySubject, Subject } from 'rxjs';
+import { combineLatest, forkJoin, interval, map, Observable, of, ReplaySubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,37 +17,49 @@ export class AppComponent {
 
   constructor(){
 
-    const obs1 = new Subject();
-    const obs2 = new Subject();
-    const obs3 = new Subject();
-    // forkjoin attend que les flux soient complétés pour diffuser
-    // combineLatest lui, diffuse à chaque fois, les dernières valeurs diffusées
-    // dans chaque canal séparé. 
+    const obs1 = new Subject<any[]>();
+    const obs2 = new Subject<any[]>();
 
-    // ATTENTION: les deux demandent que chacun des canaux ait diffusé au moins UNE donnée
     combineLatest({
-      price: obs1, 
-      vat: obs2, 
-      discount: obs3
-    }).subscribe( 
-      (obj:any)=>{
-        const price = ( (obj.price - (obj.price * obj.discount ) ) * (1 + obj.vat) ); 
-        console.log(price);
-      }
-    );
+      users: obs1, 
+      products: obs2,
+    }).pipe(
+      map( 
+        (obj:any)=>{
+          const products = obj.products; 
+          const users = obj.users;
+          users.forEach(
+            (user:any)=>{
+              user.products = products.filter(
+                (product:any)=>{
+                  return ( product.userId === user.id);
+                }
+              )
+            }
+          );
+          return users;
+        }
+      ) 
+    ).subscribe(console.log);
 
+
+    const users = [
+      {id: 1, name: "Katia"}, 
+      {id: 2, name:"Quentin"}
+    ];
+
+    const products = [
+      {id: 1, name: "Tetris", userId: 1}
+    ];
 
     // premier jeu de données diffusé
-    obs1.next(100);
-    obs2.next(0.05);
-    obs3.next(0.2);
+    obs1.next(users);
+    obs2.next(products);
 
+    products.push(
+      {id:2, name: "Halo", userId: 2}
+    ); 
 
-    // maintenanto on peut faire varier indépendamment chacune des données, cela 
-    // aura pour effet de redéclencher le subscribe
-
-    obs1.next(200);
-    obs2.next(0.1);
-    
+    setTimeout( ()=>obs2.next( products ), 5000 );
   }
 }

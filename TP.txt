@@ -1,8 +1,7 @@
-TP N°15
+TP N°16
 
-- Créez un Subject qui va diffuser des news toutes les secondes
-- Souscrivez à ce Subject au bout de 3s et envoyez les news ainsi diffusées
-dans la console 
+- Utilisez combineLatest pour fusionner deux observables (Subject) qui diffusent:  
+    - un tableau d'utilisateurs
+    - un tableau de produits (avec une clé userId en rapport avec l'utilisateur)
 
-BONUS: 
-- Remplacez le Subject par un ReplaySubject et constatez la différence ;)
+- Faire en sorte de lier les utilisateurs aux produits et diffuser la donnée ainsi fusionnée dans la console.
