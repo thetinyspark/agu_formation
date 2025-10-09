@@ -1,6 +1,10 @@
-TP N°13
+TP N°14
 
-- Créez un observable permettant de diffuser toutes les 100ms 
-le nom de chacun des participants à la formation
-- Quand tous les noms ont été diffusés, complétez le flux 
-et affichez "complete" dans la console
+- Créez un obserable à partir des données suivantes: 
+100,200,300,400
+- Chaînez cet obserable à l'aide de pipe + map et à l'intérieur 
+de map, retournez la valeur (nombre * tva)
+- TVA = 20%
+
+Normalement, vous devriez donc avoir un observable auquel souscrire 
+qui vous renverra les nombres 100,200,300,400 mais en TTC (donc avec + 20% de TVA)
