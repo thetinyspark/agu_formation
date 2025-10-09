@@ -1,5 +1,3 @@
 - Créez un resolver qui permet de résoudre les produits contenus dans le panier
 - Ajoutez ce resolver à la route cart
 - Utilisez les données retournées par ce resolver pour afficher le panier et non plus le CatalogService
-
-
