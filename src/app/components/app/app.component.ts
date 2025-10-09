@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
-import { map, Observable, of } from 'rxjs';
+import { delay, interval, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +26,9 @@ export class AppComponent {
           return value * ( 1+tva );
         }
       )
+    ).pipe( 
+      // delay ralentit la diffusion des données de x ms
+      delay(1000)
     );
 
     const sub = obs1.subscribe(
@@ -41,5 +44,19 @@ export class AppComponent {
         }
       }
     );
+
+    // interval permet de créer un observable qui diffuse quelque chose
+    // toutes les x ms (par défaut, c'est un entier qui s'incrémente)
+    const obs2 = interval(1000);
+    const sub2 = obs2.subscribe(
+      (index:number)=>{
+        const nums = [100,200,300,400];
+        console.log(nums[index%4]);
+      }
+    ); 
+
+    sub2.unsubscribe();
+
+
   }
 }
