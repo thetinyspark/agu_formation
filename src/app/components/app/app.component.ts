@@ -19,16 +19,31 @@ export class AppComponent {
     const obs1 = new Observable<string>( 
       (observer)=>{
         const users = ["Katia", "Sofian", "Quentin", "Lucas"]; 
-        users.forEach(
-          (user:string, index:number)=>{
-            setTimeout( ()=>observer.next(user), index * 1000)
-          }
-        ); 
-        setTimeout( ()=> observer.complete(), users.length * 1000);
+        var index:number = 0;
+
+        const interval = setInterval( 
+          ()=>{
+            if( index >= users.length)
+              observer.complete();
+
+            observer.next(users[index++]); 
+          }, 
+          100
+        );
+
+        // s'éxécute quand on se désinscrit de l'observable
+        // ici, n'oubliez pas de nettoyer toutes les ressources 
+        // qui prennent de la mémoire et qui ne sont pas supposées
+        // survivre à un unsubcribe
+        return ()=>{
+          clearInterval(interval);
+          observer.complete();
+        }
+        
       }
     );
 
-    obs1.subscribe(
+    const sub = obs1.subscribe(
       {
         next: (data:string)=>{
           console.log(data);
@@ -40,6 +55,13 @@ export class AppComponent {
           console.log("reason", reason);
         }
       }
+    );
+
+    setTimeout(
+      ()=>{
+        sub.unsubscribe();
+      }, 
+      600
     );
   }
 }
