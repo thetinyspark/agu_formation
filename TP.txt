@@ -1,13 +1,9 @@
-TP N°17
+TP N°18
 
-- Créez deux signaux de type number
-- Le premier doit contenir un prix 
-- Le deuxième doit contenir un taux de TVA
+- Changez le loading screen pour y inclure un texte indiquant 
+le pourcentage de chargement 
+- Le but est d'héberger un signal nommé " percentage " sur votre LoadingService
+et d'afficher ce pourcentage de chargement dans loading screen
 
-Lorsque vous appuyez sur un bouton, augmentez le taux de TVA
-et recalculez le total
-
-Lorsque vous appuyez sur un autre bouton, augmentez le prix 
-et recalculze le total 
-
-Attention le total doit être visible sur la page. 
+PS: 
+    Vos resolvers peuvent tricher un petit peu 
