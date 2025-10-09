@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, Signal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
@@ -14,52 +14,39 @@ import { combineLatest, forkJoin, interval, map, Observable, of, ReplaySubject, 
 export class AppComponent {
 
   public title = 'My Game Video Store';
+  public s1 = signal<boolean>(true);
+  public s2 = signal<string>("");
 
   constructor(){
 
-    const obs1 = new Subject<any[]>();
-    const obs2 = new Subject<any[]>();
 
-    combineLatest({
-      users: obs1, 
-      products: obs2,
-    }).pipe(
-      map( 
-        (obj:any)=>{
-          const products = obj.products; 
-          const users = obj.users;
-          users.forEach(
-            (user:any)=>{
-              user.products = products.filter(
-                (product:any)=>{
-                  return ( product.userId === user.id);
-                }
-              )
-            }
-          );
-          return users;
+    effect(
+      ()=>{
+        const isFinished = this.s1();
+        let prefix = "";
+        if( !isFinished ){
+          prefix = "Loading: ";
         }
-      ) 
-    ).subscribe(console.log);
+        this.title = prefix + this.s2();
+      }
+    )
 
+    this.s2.set("");
 
-    const users = [
-      {id: 1, name: "Katia"}, 
-      {id: 2, name:"Quentin"}
-    ];
+  }
 
-    const products = [
-      {id: 1, name: "Tetris", userId: 1}
-    ];
+  public onClick(){
+    // on déclenche notre requête
+    this.s1.set(false);
+    this.s2.set("Produits")
 
-    // premier jeu de données diffusé
-    obs1.next(users);
-    obs2.next(products);
-
-    products.push(
-      {id:2, name: "Halo", userId: 2}
-    ); 
-
-    setTimeout( ()=>obs2.next( products ), 5000 );
+    setTimeout(
+      ()=>{
+        // on a reçu la requête
+        this.s1.set(true);
+        this.s2.set("done");
+      }, 
+      5000
+    );
   }
 }
