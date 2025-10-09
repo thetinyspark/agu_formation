@@ -16,34 +16,21 @@ export class AppComponent {
   public title = 'My Game Video Store';
 
   constructor(){
-    const obs1 = new Observable<number>( 
+    const obs1 = new Observable<string>( 
       (observer)=>{
-        observer.next(10);
-         setTimeout( 
-          ()=>{
-            observer.next(100);
-          }, 
-          1000
-        )
-
-        // complete le flux de données, impossible de pousser
-        // d'avantage de données à l'intérieur
-
-
-        // observer.error("404 not found");
-
-        setTimeout( 
-          ()=>{
-            observer.complete();
-          }, 
-          5000
-        )
+        const users = ["Katia", "Sofian", "Quentin", "Lucas"]; 
+        users.forEach(
+          (user:string, index:number)=>{
+            setTimeout( ()=>observer.next(user), index * 1000)
+          }
+        ); 
+        setTimeout( ()=> observer.complete(), users.length * 1000);
       }
     );
 
     obs1.subscribe(
       {
-        next: (data:number)=>{
+        next: (data:string)=>{
           console.log(data);
         }, 
         complete: ()=>{
