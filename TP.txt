@@ -1,10 +1,8 @@
-TP N°14
+TP N°15
 
-- Créez un obserable à partir des données suivantes: 
-100,200,300,400
-- Chaînez cet obserable à l'aide de pipe + map et à l'intérieur 
-de map, retournez la valeur (nombre * tva)
-- TVA = 20%
+- Créez un Subject qui va diffuser des news toutes les secondes
+- Souscrivez à ce Subject au bout de 3s et envoyez les news ainsi diffusées
+dans la console 
 
-Normalement, vous devriez donc avoir un observable auquel souscrire 
-qui vous renverra les nombres 100,200,300,400 mais en TTC (donc avec + 20% de TVA)
+BONUS: 
+- Remplacez le Subject par un ReplaySubject et constatez la différence ;)
