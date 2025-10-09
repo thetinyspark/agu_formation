@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
-import { Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,31 +16,15 @@ export class AppComponent {
   public title = 'My Game Video Store';
 
   constructor(){
-    const obs1 = new Observable<string>( 
-      (observer)=>{
-        const users = ["Katia", "Sofian", "Quentin", "Lucas"]; 
-        var index:number = 0;
-
-        const interval = setInterval( 
-          ()=>{
-            if( index >= users.length)
-              observer.complete();
-
-            observer.next(users[index++]); 
-          }, 
-          100
-        );
-
-        // s'éxécute quand on se désinscrit de l'observable
-        // ici, n'oubliez pas de nettoyer toutes les ressources 
-        // qui prennent de la mémoire et qui ne sont pas supposées
-        // survivre à un unsubcribe
-        return ()=>{
-          clearInterval(interval);
-          observer.complete();
+    // of permet de créer un observable à partir de données synchrones
+    // pipe permet de rediriger chacune des valeurs diffusée par l'observable
+    // vers un opérateur (ici map). Cela résulte en un nouvel observable.
+    const obs1 = of("Katia", "Sofian", "Quentin", "Lucas").pipe(
+      map(
+        (value:string, index:number)=>{
+          return `Participant(e) N° ${index+1} : ${value}`;
         }
-        
-      }
+      )
     );
 
     const sub = obs1.subscribe(
@@ -55,13 +39,6 @@ export class AppComponent {
           console.log("reason", reason);
         }
       }
-    );
-
-    setTimeout(
-      ()=>{
-        sub.unsubscribe();
-      }, 
-      600
     );
   }
 }
