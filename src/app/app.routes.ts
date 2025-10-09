@@ -5,6 +5,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { emptyCartGuard } from './guards/empty-cart.guard';
 import { catalogResolver } from './resolvers/catalog.resolver';
+import { cartResolver } from './resolvers/cart.resolver';
 
 const routeConfig: Routes = [
   {
@@ -16,7 +17,10 @@ const routeConfig: Routes = [
     path: 'cart',
     component: CartComponent,
     title: 'My Cart', 
-    canActivate: [emptyCartGuard]
+    canActivate: [emptyCartGuard], 
+    resolve: {
+      cart: cartResolver
+    }
   },
   {
     path: 'catalog',

@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Product } from '../../models/product';
-import { CatalogService } from '../../services/catalog.service';
 import { ProductComponent } from '../product/product.component';
 import { NgFor } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,8 +13,9 @@ import { NgFor } from '@angular/common';
 })
 export class CartComponent {
   public products:Product[] = []; 
-  private _catalog:CatalogService = inject(CatalogService);
+  private _route:ActivatedRoute = inject(ActivatedRoute);
   public async ngOnInit(){
-    this.products = await this._catalog.getCart();
+    const body = this._route.snapshot.data as any;
+    this.products = body.cart as Product[];
   }
 }
