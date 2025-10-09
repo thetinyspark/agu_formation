@@ -1,3 +1,5 @@
+TP N°13
+
 - Créez un observable permettant de diffuser toutes les 100ms 
 le nom de chacun des participants à la formation
 - Quand tous les noms ont été diffusés, complétez le flux 
