@@ -1,7 +1,13 @@
-TP N°16
+TP N°17
 
-- Utilisez combineLatest pour fusionner deux observables (Subject) qui diffusent:  
-    - un tableau d'utilisateurs
-    - un tableau de produits (avec une clé userId en rapport avec l'utilisateur)
+- Créez deux signaux de type number
+- Le premier doit contenir un prix 
+- Le deuxième doit contenir un taux de TVA
 
-- Faire en sorte de lier les utilisateurs aux produits et diffuser la donnée ainsi fusionnée dans la console.
+Lorsque vous appuyez sur un bouton, augmentez le taux de TVA
+et recalculez le total
+
+Lorsque vous appuyez sur un autre bouton, augmentez le prix 
+et recalculze le total 
+
+Attention le total doit être visible sur la page. 
