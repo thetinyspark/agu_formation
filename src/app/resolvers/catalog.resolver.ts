@@ -7,8 +7,9 @@ import { LoadingService } from '../services/loading.service';
 export const catalogResolver: ResolveFn<Promise<Product[]>> = async (route, state) => {
   const service = inject(CatalogService); 
   const loader = inject(LoadingService); 
-  loader.isLoading.set(true);
-  const products = await service.getProducts();
-  loader.isLoading.set(false);
+  loader.startLoading();
+  loader.setProgress(25);
+  const products = await service.getProducts();  
+  loader.setProgress(100);
   return products;
 };
