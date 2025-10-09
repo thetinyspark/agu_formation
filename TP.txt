@@ -1,3 +1,4 @@
-- Créez un resolver qui permet de résoudre les produits contenus dans le panier
-- Ajoutez ce resolver à la route cart
-- Utilisez les données retournées par ce resolver pour afficher le panier et non plus le CatalogService
+- Créez un observable permettant de diffuser toutes les 100ms 
+le nom de chacun des participants à la formation
+- Quand tous les noms ont été diffusés, complétez le flux 
+et affichez "complete" dans la console
