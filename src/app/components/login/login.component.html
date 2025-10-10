@@ -1,8 +1,16 @@
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div>
+
+    </div>
+
     <div>
         <label>Email: </label>
         <input type="email" formControlName="email" />
+        <p *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['invalidEmail'] ">
+            L'email est invalide
+        </p>
     </div>
 
     <div>
