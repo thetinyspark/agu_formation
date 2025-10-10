@@ -1,9 +1,10 @@
-TP N°18
+TP N°19
 
-- Changez le loading screen pour y inclure un texte indiquant 
-le pourcentage de chargement 
-- Le but est d'héberger un signal nommé " percentage " sur votre LoadingService
-et d'afficher ce pourcentage de chargement dans loading screen
+- Créez une fonction (un validator) qui nous permet de valider l'email
+rentré par l'utilisateur.
 
-PS: 
-    Vos resolvers peuvent tricher un petit peu 
+- Ajouter ce validator à la liste des validateurs du champ email
+
+La regexp pour valider un email est la suivante /^[^\s@]+@[^\s@]+\.[^\s@]+$/.
+ex: d'utilisation 
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

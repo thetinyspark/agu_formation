@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { emptyCartGuard } from './guards/empty-cart.guard';
 import { catalogResolver } from './resolvers/catalog.resolver';
 import { cartResolver } from './resolvers/cart.resolver';
+import { LoginComponent } from './components/login/login.component';
 
 const routeConfig: Routes = [
   {
@@ -34,6 +35,11 @@ const routeConfig: Routes = [
     path: 'product/:id',
     component: ProductDetailComponent,
     title: 'My Product'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Me'
   }
 ];
 
