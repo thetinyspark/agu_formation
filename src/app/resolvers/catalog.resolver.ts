@@ -9,7 +9,8 @@ export const catalogResolver: ResolveFn<Promise<Product[]>> = async (route, stat
   const loader = inject(LoadingService); 
   loader.startLoading();
   loader.setProgress(25);
-  const products = await service.getProducts();  
+  // const products = await service.getProducts();  
+  const products = service.allProducts();  
   loader.setProgress(100);
   return products;
 };

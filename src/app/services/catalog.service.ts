@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Product } from '../models/product';
-import { Observable, firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom, interval } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -9,11 +9,23 @@ import { environment } from '../../environments/environment';
 })
 export class CatalogService {
   private _client: HttpClient = inject(HttpClient);
+  private _products = signal<Product[]>([]);
+  public allProducts = this._products.asReadonly();
 
-  constructor() {}
+  constructor() {
+    // update régulier des produits
+    this._refreshProducts();
+  }
 
-  public getProducts(): Promise<Product[]> {
-    return firstValueFrom( this._client.get<Product[]>(environment.productsURI) );
+  private _refreshProducts = async ()=>{
+    await this.getProducts();
+    setTimeout( this._refreshProducts,10000 );
+  }
+
+  public async getProducts(): Promise<Product[]> {
+    const products = await firstValueFrom( this._client.get<Product[]>(environment.productsURI) );
+    this._products.set(products);
+    return products;
   }
   
   public async getProductById(id:number):Promise<Product|null>{
