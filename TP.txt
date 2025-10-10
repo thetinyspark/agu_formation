@@ -1,11 +1,5 @@
-TP N°19
+TP N°20
 
-- Créez une fonction (un validator) qui nous permet de valider l'email
-rentré par l'utilisateur.
-
-- Ajouter ce validator à la liste des validateurs du champ email
-
-La regexp pour valider un email est la suivante /^[^\s@]+@[^\s@]+\.[^\s@]+$/.
-ex: d'utilisation 
-/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+- affichez dans le template l'erreur 'tooShortPassword' quand 
+le mot de passe est effectivement trop court
 
