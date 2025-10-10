@@ -1,17 +1,7 @@
-import { Component, computed, effect, inject, Signal, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
-import {
-  combineLatest,
-  forkJoin,
-  interval,
-  map,
-  Observable,
-  of,
-  ReplaySubject,
-  Subject,
-} from 'rxjs';
 import { LoadingService } from '../../services/loading.service';
 
 @Component({

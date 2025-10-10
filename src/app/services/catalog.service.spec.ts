@@ -4,6 +4,8 @@ import { CatalogService } from './catalog.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { PRODUCTS_MOCK } from '../models/mocks/product-mocks';
+import { environment } from '../../environments/environment';
+import { CART_MOCK } from '../models/mocks/cart-mocks';
 
 fdescribe('CatalogService', () => {
   let service: CatalogService;
@@ -14,7 +16,11 @@ fdescribe('CatalogService', () => {
 
   class FakeHttpClient{
     get<T>(url:string):Observable<any>{
-      return of(PRODUCTS_MOCK);
+      // si on interroge les produits alors on retourne un fake tableau de produits
+      if( url.includes(environment.productsURI))
+        return of(PRODUCTS_MOCK);
+      else // sinon on retourne le panier
+        return of(CART_MOCK);
     }
   }
   const fakeHttpClient = new FakeHttpClient();
@@ -41,7 +47,6 @@ fdescribe('CatalogService', () => {
   it('should return all the products', async () => {
 
     // given
-    expect(service).toBeTruthy();
 
     // créer un espion permet d'intercepter l'appel d'une méthode sur un object cible
     // et de retourner une valeur à la place.
@@ -52,5 +57,14 @@ fdescribe('CatalogService', () => {
 
     // then
     expect(products).toEqual(PRODUCTS_MOCK);
+  });
+
+  it('should return the cart', async () => {
+    // given
+    // when 
+    const products = await service.getCart();
+
+    // then
+    expect(products).toEqual(CART_MOCK);
   });
 });
