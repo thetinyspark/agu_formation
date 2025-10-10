@@ -29,9 +29,7 @@ export class LoginComponent {
   }
 
   public onSubmit():void{
-    // if( this.form.valid){
-      console.log(this.form.get('email')?.valid);
-      console.log(this.form.get('password')?.valid);
-    // }
+    if( this.form.valid){
+    }
   }
 }
