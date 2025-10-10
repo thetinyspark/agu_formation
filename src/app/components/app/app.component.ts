@@ -3,6 +3,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { LoadingService } from '../../services/loading.service';
+import { DummyService } from '../../services/dummy.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,14 @@ export class AppComponent {
   public loadingService = inject(LoadingService);
   public isLoading = this.loadingService.isLoading;
   public percentage = this.loadingService.percentage;
+
+  public dummy = inject(DummyService);
+
+  ngOnInit(){
+    this.dummy.show(10,20);
+    this.dummy.show("Bob","Sarah");
+    this.dummy.show();
+  }
 
   public total = computed( 
     ()=>{
