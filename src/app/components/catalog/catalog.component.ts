@@ -22,6 +22,8 @@ export class CatalogComponent {
   public priceMax:number = 100;
   public nameFilter:string = "";
 
+  public numProducts = 0;
+
   private _catalog:CatalogService = inject(CatalogService);
   private _activatedRoute:ActivatedRoute = inject(ActivatedRoute);
 
@@ -30,6 +32,7 @@ export class CatalogComponent {
   public async ngOnInit(){
     const data:any = this._activatedRoute.snapshot.data;
     this.products =  data.catalog as Product[] || [];
+    this.numProducts =  this.products.length;
   }
 
   public getFilters():any{

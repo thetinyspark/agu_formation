@@ -1,5 +1,5 @@
 <div class="catalog">
-    <label>Platforme: </label><select class="platforms" [(ngModel)]="currentPlatform">
+    <label i18n >Platforme: </label><select class="platforms" [(ngModel)]="currentPlatform">
         <option 
         *ngFor="let platform of getPlatforms()"
         value={{platform}}>{{platform}}</option>
@@ -8,6 +8,15 @@
     <label>Prix min: </label><input type="number" [(ngModel)]="priceMin" /> <br/>
     <label>Prix max: </label><input type="number" [(ngModel)]="priceMax" /> <br/>
     <label>Nom: </label><input type="string" [(ngModel)]="nameFilter" /> <br/>
+
+    <p i18n>
+        Welcome {
+            numProducts, plural,
+            =0 {there is no products}
+            =1 {there is one product}
+            other { there is {{numProducts}} product }
+        }
+    </p>
 
     <app-product 
         [currentProduct]="myProduct" 
