@@ -1,4 +1,10 @@
-TP N°21
+TP N°22
 
-- Testez le platformPipe
+- Etendre la suite de test du catalogService et tester getCart()
+
+ATTENTION: la méthode get actuelle du FakeHttClient 
+renvoit les données correspondant à getProducts()
+
+Vous pouvez utiliser des spies ou mettre une condition dans l'url au sein 
+de la méthode get de votre FakeHttClient
 
