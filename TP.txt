@@ -1,5 +1,4 @@
-TP N°20
+TP N°21
 
-- affichez dans le template l'erreur 'tooShortPassword' quand 
-le mot de passe est effectivement trop court
+- Testez le platformPipe
 
