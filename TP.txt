@@ -8,3 +8,4 @@ rentré par l'utilisateur.
 La regexp pour valider un email est la suivante /^[^\s@]+@[^\s@]+\.[^\s@]+$/.
 ex: d'utilisation 
 /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
