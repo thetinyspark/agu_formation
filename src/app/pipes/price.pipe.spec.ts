@@ -1,14 +1,6 @@
+import { PRODUCTS_MOCK } from '../models/mocks/product-mocks';
 import { Product } from '../models/product';
 import { PricePipe } from './price.pipe';
-
-const MOCK_PRODUCTS:Product[] = [
-  {id: 1, desc: "", img: "", name : "",platform: "", price: 10},
-  {id: 2, desc: "", img: "", name : "",platform: "", price: 20},
-  {id: 3, desc: "", img: "", name : "",platform: "", price: 30},
-  {id: 4, desc: "", img: "", name : "",platform: "", price: 40},
-  {id: 5, desc: "", img: "", name : "",platform: "", price: 50},
-  {id: 6, desc: "", img: "", name : "",platform: "", price: 60},
-];
 
 fdescribe('PricePipe Test Suite', () => {
 
@@ -32,7 +24,7 @@ fdescribe('PricePipe Test Suite', () => {
           () => {
             // given
             const pipe = new PricePipe();
-            const products = MOCK_PRODUCTS;
+            const products = PRODUCTS_MOCK;
             const min:number = obj.min;
             const max:number = obj.max;
             
