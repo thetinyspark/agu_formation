@@ -6,6 +6,7 @@ import { CatalogPipe } from '../../pipes/catalog.pipe';
 import { CatalogService } from '../../services/catalog.service';
 import { ProductComponent } from '../product/product.component';
 import { ActivatedRoute } from '@angular/router';
+import { PRODUCTS_MOCK } from '../../models/mocks/product-mocks';
 
 @Component({
   selector: 'app-catalog',
@@ -16,40 +17,40 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CatalogComponent {
 
-  public products:Product[] = [];
-  public currentPlatform:string = "";
-  public priceMin:number = 0;
-  public priceMax:number = 100;
-  public nameFilter:string = "";
+  public products: Product[] = [];
+  public currentPlatform: string = "";
+  public priceMin: number = 0;
+  public priceMax: number = 100;
+  public nameFilter: string = "";
 
-  private _catalog:CatalogService = inject(CatalogService);
-  private _activatedRoute:ActivatedRoute = inject(ActivatedRoute);
+  private _catalog: CatalogService = inject(CatalogService);
+  private _activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
-  constructor(){}
+  constructor() { }
 
-  public async ngOnInit(){
-    const data:any = this._activatedRoute.snapshot.data;
-    this.products =  data.catalog as Product[] || [];
+  public async ngOnInit() {
+    const data: any = this._activatedRoute.snapshot.data;
+    this.products = PRODUCTS_MOCK; //this.products =  data.catalog as Product[] || [];
   }
 
-  public getFilters():any{
+  public getFilters(): any {
     return {
-      currentPlatform: this.currentPlatform, 
-      priceMin: this.priceMin, 
-      priceMax: this.priceMax, 
+      currentPlatform: this.currentPlatform,
+      priceMin: this.priceMin,
+      priceMax: this.priceMax,
       nameFilter: this.nameFilter
     }
   }
 
-  public getPlatforms():string[]{
+  public getPlatforms(): string[] {
     // retourne un tableau contenant toutes les plateformes de tous les produits
-    const platforms = this.products.map( (p)=>p.platform );
+    const platforms = this.products.map((p) => p.platform);
 
     // on transforme notre tableau en Set, qui interdit les doublons
     const uniqPlatformsSet = new Set(platforms);
 
     // on reconstruit un tableau à partir du Set
-    const uniqPlatforms = Array.from( uniqPlatformsSet );
+    const uniqPlatforms = Array.from(uniqPlatformsSet);
 
     // on ajoute une plateforme vide (pour pouvoir ne sélectionner aucune plateforme)
     uniqPlatforms.unshift("");
@@ -58,7 +59,7 @@ export class CatalogComponent {
     return uniqPlatforms;
   }
 
-  public onBuyProduct(product:Product):void{
+  public onBuyProduct(product: Product): void {
     this._catalog.buy(product);
   }
 }
