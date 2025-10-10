@@ -23,9 +23,6 @@ export class AppComponent {
   public dummy = inject(DummyService);
 
   ngOnInit(){
-    this.dummy.show(10,20);
-    this.dummy.show("Bob","Sarah");
-    this.dummy.show();
   }
 
   public total = computed( 

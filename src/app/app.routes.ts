@@ -25,7 +25,8 @@ const routeConfig: Routes = [
   },
   {
     path: 'catalog',
-    component: CatalogComponent,
+    // component: CatalogComponent,
+    loadComponent: ():any=> import("./components/catalog/catalog.component").then( module=>module.CatalogComponent),
     title: 'My Catalog', 
     resolve: {
       catalog: catalogResolver

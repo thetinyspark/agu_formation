@@ -10,7 +10,9 @@ import {NgModule} from '@angular/core';
 import { catalogInterceptor } from './interceptors/catalog.interceptor';
 
 @NgModule({
-  providers: [{provide: APP_BASE_HREF, useValue: environment.baseHref}]
+  providers: [{provide: APP_BASE_HREF, useValue: environment.baseHref}], 
+  // imports:[CatalogModule] 
+  // // vieille d'incorporer un module et ses fonctionnalités
 })
 class AppModule {}
 
@@ -24,6 +26,8 @@ export const appConfig: ApplicationConfig = {
       [catalogInterceptor]
     )),
     importProvidersFrom(HttpClientModule), 
-    importProvidersFrom(AppModule)
+    importProvidersFrom(AppModule),
+    // importProvidersFrom(CatalogModule),
+    // vieille façon d'incorporer les providers d'un module
   ]
 };
